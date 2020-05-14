@@ -1,5 +1,5 @@
 server:
   servlet:
-    context-path: /
+    context-path: /czzinterfaces/
   port: 8080
 
