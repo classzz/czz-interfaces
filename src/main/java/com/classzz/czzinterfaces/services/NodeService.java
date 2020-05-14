@@ -30,4 +30,18 @@ public class NodeService {
         return miningInfoDto;
     }
 
+    /**
+     * @funution  Get mining-related information
+     * @author Robin-byte
+     * @time 2020/5/14 15:46
+     */
+    public MiningInfoDto getMainNetWorkInfo(){
+        List<Object> params = new ArrayList<>();
+
+        JSONObject object = HttpClient.GetResult(params,"getmininginfo");
+        MiningInfoDto miningInfoDto = JSON.toJavaObject(object.getJSONObject("result"),MiningInfoDto.class) ;
+        return miningInfoDto;
+
+    }
+
 }
