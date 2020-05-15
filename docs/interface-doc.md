@@ -1,5 +1,7 @@
 # Get the current main network computing power
 
+
+<a name="getHashRate"/>
 Request path: http://localhost:8080/czzinterfaces/getHashRate
 
 interface name: getHashRate
@@ -35,6 +37,9 @@ Response:
         }
 }
 ```
+
+
+<a name="getDifficulty"/>
 # Get the current block difficulty
 
 request method: GET

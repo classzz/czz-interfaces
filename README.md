@@ -5,6 +5,6 @@
 
 | Interface name    | complete status   | doc link  |
 | :------:          | :-----:           | :----:    |
-| getDifficulty     | ×                 |   ×       |
-| getHashRate       | ×                 |   ×       |
+| getDifficulty     | √                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getHashRate)       |
+| getHashRate       | √                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getDifficulty)       |
 |:|:|:|
