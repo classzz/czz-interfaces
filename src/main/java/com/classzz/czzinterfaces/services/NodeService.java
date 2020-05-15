@@ -3,10 +3,8 @@ package com.classzz.czzinterfaces.services;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.classzz.czzinterfaces.CzzConstants;
-import com.classzz.czzinterfaces.dtos.JsonParam;
 import com.classzz.czzinterfaces.dtos.node.MiningInfoDto;
-import com.classzz.czzinterfaces.utils.HttpUtil;
+import com.classzz.czzinterfaces.utils.HttpClient;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,22 +18,6 @@ public class NodeService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NodeService.class);
 
-    public JSONObject getResult(List<Object> params, String methodName){
-
-        JsonParam jsonParam = new JsonParam();
-        jsonParam.setJsonrpc("2.0");
-        jsonParam.setMethod(methodName);
-        jsonParam.setParams(params);
-        jsonParam.setId(67L);
-        String param = JSONObject.toJSONString(jsonParam);
-        String result = HttpUtil.doPost(CzzConstants.NODE_URL, param);
-        JSONObject object = (JSONObject)JSONObject.parse(result);
-        return object;
-
-    }
-
-
-
     /**
      * Get block difficulty information
      * @return
@@ -43,9 +25,23 @@ public class NodeService {
     public MiningInfoDto getMiningInfo(){
         List<Object> params = new ArrayList<>();
 
-        JSONObject object = getResult(params,"getmininginfo");
+        JSONObject object = HttpClient.GetResult(params,"getmininginfo");
         MiningInfoDto miningInfoDto = JSON.toJavaObject(object.getJSONObject("result"),MiningInfoDto.class) ;
         return miningInfoDto;
+    }
+
+    /**
+     * @funution  Get mining-related information
+     * @author Robin-byte
+     * @time 2020/5/14 15:46
+     */
+    public MiningInfoDto getMainNetWorkInfo(){
+        List<Object> params = new ArrayList<>();
+
+        JSONObject object = HttpClient.GetResult(params,"getmininginfo");
+        MiningInfoDto miningInfoDto = JSON.toJavaObject(object.getJSONObject("result"),MiningInfoDto.class) ;
+        return miningInfoDto;
+
     }
 
 }
