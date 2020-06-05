@@ -93,6 +93,7 @@ Request path: http://localhost:8080/czzinterfaces/getAddressRanking
 interface name: getAddressRanking
 
 (All with * are optional)
+
 interface input parameter: *orderby,*balancefrom,*balanceto,*rankfrom,*rankto,*pagenum,*pagesize
 
 interface output parameter: address,balance,rank
