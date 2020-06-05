@@ -20,7 +20,7 @@ return instructions:
         }
 }
 ```
-### sample
+####  sample
 Request:
 
 GET http://localhost:8080/czzinterfaces/getHashRate
@@ -40,7 +40,7 @@ Response:
 
 ###getDifficulty
 <a name="getDifficulty"/>
-# Get the current block difficulty
+Get the current block difficulty
 
 request method: GET
 
@@ -62,7 +62,7 @@ return instructions:
         }
 }
 ```
-### sample
+#### sample
 Request: 
 
 GET http://localhost:8080/czzinterfaces/getDifficulty
@@ -84,7 +84,7 @@ Response:
 
 ### getAddressRanking
 <a name="getAddressRanking"/>
-# Get the current block difficulty
+Get the AddressRanking
 
 request method: GET
 
@@ -122,7 +122,7 @@ pagesize	==>	Page size	（default:20）
 
 
 ```
-### sample
+#### sample
 Request:
 
 GET http://localhost:8080/czzinterfaces/getAddressRanking
