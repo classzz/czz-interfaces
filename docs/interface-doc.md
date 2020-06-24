@@ -175,11 +175,10 @@ Response:
 {
     "state" : 200,
     "version" : "v1.0",
-    "data" :[
-                {
-                  "exchange_id": 1,
+    "data" :{
+                  "id": 1,
                      "address": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-                     "toAddress_pk_hex": "000000000000000000000000000000000000001d",
+                     "beacon_address": "000000000000000000000000000000000000001d",
                      "staking_amount": 5000000,
                      "asset_flag": 1,
                      "fee": 0,
@@ -193,7 +192,7 @@ Response:
                      ]
 
                 }
-          ]
+          
 }
 ```
 
