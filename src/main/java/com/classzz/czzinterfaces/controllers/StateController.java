@@ -56,14 +56,15 @@ public class StateController {
     @RequestMapping(value = "getStateInfoById")
     public @ResponseBody
     JSONObject getStateInfoById(Integer id) {
-
+//        JSONArray array = new JSONArray();
         JSONObject result = new JSONObject();
-        JSONArray array = new JSONArray();
+
+        JSONObject data = new JSONObject();
         result.put("state", 200);
         result.put("version", "v1.0");
 
-        if(null==id){
-            result.put("data", array);
+        if (null == id) {
+            result.put("data", data);
             return result;
         }
 
@@ -72,21 +73,22 @@ public class StateController {
             if (null != stateInfo && stateInfo.size() > 0) {
                 for (int i = 0; i < stateInfo.size(); i++) {
                     if (stateInfo.get(i).getExchange_id().equals(id)) {
-                        JSONObject data = new JSONObject();
-                        data.put("exchange_id", stateInfo.get(i).getExchange_id());
+
+                        data.put("id", stateInfo.get(i).getExchange_id());
                         data.put("address", stateInfo.get(i).getAddress());
-                        data.put("toAddress_pk_hex", stateInfo.get(i).getToAddress_pk_hex());
+                        data.put("beacon_address", stateInfo.get(i).getToAddress_pk_hex());
                         data.put("staking_amount", stateInfo.get(i).getStaking_amount());
                         data.put("asset_flag", stateInfo.get(i).getAsset_flag());
                         data.put("fee", stateInfo.get(i).getFee());
                         data.put("keep_time", stateInfo.get(i).getKeep_time());
                         data.put("white_list", stateInfo.get(i).getWhite_list());
                         data.put("CoinBaseAddress", stateInfo.get(i).getCoinBaseAddress());
-                        array.add(data);
+//                        array.add(data);
+                        result.put("data", data);
                     }
                 }
             }
-            result.put("data", array);
+            result.put("data", data);
 
         } catch (Exception e) {
             result.put("state", 500);
