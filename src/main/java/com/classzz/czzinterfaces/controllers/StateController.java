@@ -56,7 +56,7 @@ public class StateController {
     @RequestMapping(value = "getStateInfoById")
     public @ResponseBody
     JSONObject getStateInfoById(Integer id) {
-        System.out.println(id);
+
         JSONObject result = new JSONObject();
         JSONArray array = new JSONArray();
         result.put("state", 200);
