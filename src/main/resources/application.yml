@@ -2,4 +2,12 @@ server:
   servlet:
     context-path: /czzinterfaces/
   port: 8080
-
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/czz_explorer_prod?useUnicode=true&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: pass
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.classzz.czzinterfaces.mappers
