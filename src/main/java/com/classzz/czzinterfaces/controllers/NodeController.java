@@ -37,7 +37,8 @@ public class NodeController {
 
         try{
             System.out.println(requestParam);
-            Map requestMap = JSON.parseObject(requestParam, Map.class);
+            Map<String, Object> requestMap = JSON.parseObject(requestParam, Map.class);
+            System.out.println(requestMap.toString());
             //Parameter calibration
             for (Object map : requestMap.entrySet()) {
                 if(((Map.Entry)map).getKey() == "orderby" && !((((Map.Entry)map).getValue()) instanceof Boolean)) {
@@ -60,8 +61,17 @@ public class NodeController {
                     && Double.parseDouble(requestMap.get("rankfrom").toString()) >= Double.parseDouble(requestMap.get("rankto").toString())){
                 throw new Exception("Rankfrom is greater than rankto");
             }
+            if(requestMap.get("orderby") == null){
+                requestMap.put("orderby", false);
+            }
+            if(requestMap.get("pagenum") == null){
+                requestMap.put("pagenum", 1);
+            }
+            if(requestMap.get("pagesize") == null){
+                requestMap.put("pagesize", 20);
+            }
 
-            List<Map<String, String>> data = nodeService.tempMethodName(requestMap);
+            List<Map<String, String>> data = nodeService.getAddressHoldMoneyRanking(requestMap);
             result.put("data", data);
 
         } catch (Exception e) {
