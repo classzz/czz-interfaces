@@ -56,14 +56,14 @@ public class StateController {
     @RequestMapping(value = "getStateInfoById")
     public @ResponseBody
     JSONObject getStateInfoById(Integer id) {
-
-        JSONObject result = new JSONObject();
 //        JSONArray array = new JSONArray();
+        JSONObject result = new JSONObject();
+
         JSONObject data = new JSONObject();
         result.put("state", 200);
         result.put("version", "v1.0");
 
-        if(null==id){
+        if (null == id) {
             result.put("data", data);
             return result;
         }
