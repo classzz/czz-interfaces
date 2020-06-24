@@ -22,8 +22,6 @@ public class NodeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(NodeController.class);
 
-    //测试 master
-
     @Autowired
     private NodeService nodeService;
 
