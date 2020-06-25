@@ -3,8 +3,8 @@
 <mapper namespace="com.classzz.czzinterfaces.mappers.NodeMapper">
 
     <select id="getAddressRankingMapper" parameterType="Map" resultType="Map" >
-        select b.address, b.balance, b.rank1 from (
-            select a.address, a.balance, floor(a.rank1) rank1 from (
+        select b.address, b.balance, cast(b.rank1 as signed) as `rank` from (
+            select a.address, a.balance, a.rank1 rank1 from (
                 select s.address, s.balance, @rownum:=@rownum+1 rank1 from (
                     select address, balance
                     from account

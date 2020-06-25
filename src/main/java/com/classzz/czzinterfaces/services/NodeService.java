@@ -32,8 +32,8 @@ public class NodeService {
      * @time 2020/06/07 16:06
      * @return
      */
-    public List<Map<String, String>> getAddressHoldMoneyRanking(Map<String, Object> map) throws Exception{
-        List<Map<String, String>> resultAddressRankList = new ArrayList<>();
+    public List<Map<String, Object>> getAddressHoldMoneyRanking(Map<String, Object> map) throws Exception{
+        List<Map<String, Object>> resultAddressRankList = new ArrayList<>();
         SqlSession sqlSession = sqlSessionFactory.openSession();
         NodeMapper nodeMapper = sqlSession.getMapper(NodeMapper.class);
         try {

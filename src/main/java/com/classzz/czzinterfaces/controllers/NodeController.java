@@ -71,7 +71,7 @@ public class NodeController {
                 requestMap.put("pagesize", 20);
             }
 
-            List<Map<String, String>> data = nodeService.getAddressHoldMoneyRanking(requestMap);
+            List<Map<String, Object>> data = nodeService.getAddressHoldMoneyRanking(requestMap);
             result.put("data", data);
 
         } catch (Exception e) {
