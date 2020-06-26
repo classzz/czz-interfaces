@@ -7,7 +7,7 @@
 | :------:          | :-----:           | :----:    |
 | getDifficulty     | √                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getHashRate)       |
 | getHashRate       | √                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getDifficulty)       |
-| getAddressRanking       | X                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getAddressRanking)       |
+| getAddressRanking       | √                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getAddressRanking)       |
 | getStateInfo       | √                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getStateInfo)       |
 | getStateInfoById       | √                 |   [Return to Overview](https://github.com/classzz/czz-interfaces/blob/master/docs/interface-doc.md#getStateInfoById)       |
 |:|:|:|
