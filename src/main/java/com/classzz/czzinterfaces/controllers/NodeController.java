@@ -36,9 +36,10 @@ public class NodeController {
         result.put("version", "v1.0");
 
         try{
-            System.out.println(requestParam);
+            if (requestParam == null)
+                requestParam = "{}";
+
             Map<String, Object> requestMap = JSON.parseObject(requestParam, Map.class);
-            System.out.println(requestMap.toString());
             //Parameter calibration
             for (Object map : requestMap.entrySet()) {
                 if(((Map.Entry)map).getKey() == "orderby" && !((((Map.Entry)map).getValue()) instanceof Boolean)) {
