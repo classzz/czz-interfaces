@@ -30,47 +30,54 @@ public class NodeController {
      * @return
      */
     @GetMapping("getAddressRanking")
-    public @ResponseBody JSONObject getAddressRanking(@RequestBody String requestParam){
+    public @ResponseBody JSONObject getAddressRanking(Boolean orderby , Double balancefrom, Double balanceto, Integer rankfrom, Integer rankto, Integer pagenum, Integer pagesize){
+
         JSONObject result = new JSONObject();
         result.put("state", 200);
         result.put("version", "v1.0");
 
         try{
-            if (requestParam == null)
-                requestParam = "{}";
 
-            Map<String, Object> requestMap = JSON.parseObject(requestParam, Map.class);
             //Parameter calibration
-            for (Object map : requestMap.entrySet()) {
-                if(((Map.Entry)map).getKey() == "orderby" && !((((Map.Entry)map).getValue()) instanceof Boolean)) {
-                    throw new Exception("orderby parameter type error");
-                } else if("rankfrom,rankto,pagenum,pagesize".indexOf(((Map.Entry)map).getKey().toString()) != -1 && !((((Map.Entry)map).getValue()) instanceof Integer)){
-                    throw new Exception(((Map.Entry)map).getKey().toString() +" parameter type error");
-                } else if("balancefrom,balanceto".indexOf(((Map.Entry)map).getKey().toString()) != -1 && !((((Map.Entry)map).getValue()) instanceof BigDecimal) && !((((Map.Entry)map).getValue()) instanceof Integer)){
-                    throw new Exception(((Map.Entry)map).getKey().toString() +" parameter type error");
-                } else if(((Map.Entry)map).getKey() != "orderby" && Double.valueOf(((Map.Entry)map).getValue().toString()) < 0) {
-                    throw new Exception("The "+((Map.Entry)map).getKey().toString()+" cannot be negative");
-                }
-            }
-            if(requestMap.get("balancefrom") != null
-                    && requestMap.get("balanceto") != null
-                    && Double.parseDouble(requestMap.get("balancefrom").toString()) >= Double.parseDouble(requestMap.get("balanceto").toString())){
+//            for (Object map : requestMap.entrySet()) {
+//                if(((Map.Entry)map).getKey() == "orderby" && !((((Map.Entry)map).getValue()) instanceof Boolean)) {
+//                    throw new Exception("orderby parameter type error");
+//                } else if("rankfrom,rankto,pagenum,pagesize".indexOf(((Map.Entry)map).getKey().toString()) != -1 && !((((Map.Entry)map).getValue()) instanceof Integer)){
+//                    throw new Exception(((Map.Entry)map).getKey().toString() +" parameter type error");
+//                } else if("balancefrom,balanceto".indexOf(((Map.Entry)map).getKey().toString()) != -1 && !((((Map.Entry)map).getValue()) instanceof BigDecimal) && !((((Map.Entry)map).getValue()) instanceof Integer)){
+//                    throw new Exception(((Map.Entry)map).getKey().toString() +" parameter type error");
+//                } else if(((Map.Entry)map).getKey() != "orderby" && Double.valueOf(((Map.Entry)map).getValue().toString()) < 0) {
+//                    throw new Exception("The "+((Map.Entry)map).getKey().toString()+" cannot be negative");
+//                }
+//            }
+
+            if(balancefrom != null && balanceto !=null && balancefrom >= balanceto ) {
                 throw new Exception("Balancefrom is greater than balanceto");
             }
-            if(requestMap.get("rankfrom") != null
-                    && requestMap.get("rankto") != null
-                    && Double.parseDouble(requestMap.get("rankfrom").toString()) >= Double.parseDouble(requestMap.get("rankto").toString())){
+
+            if(rankfrom != null  && rankto != null && rankfrom >= rankto ){
                 throw new Exception("Rankfrom is greater than rankto");
             }
-            if(requestMap.get("orderby") == null){
-                requestMap.put("orderby", false);
+
+            if(orderby == null){
+                orderby = false;
             }
-            if(requestMap.get("pagenum") == null){
-                requestMap.put("pagenum", 1);
+            if(pagenum == null){
+                pagenum = 1;
             }
-            if(requestMap.get("pagesize") == null){
-                requestMap.put("pagesize", 20);
+            if(pagesize  == null){
+                pagesize = 20;
             }
+
+
+            Map<String, Object> requestMap = new HashMap<>();
+            requestMap.put("balancefrom",balancefrom);
+            requestMap.put("balanceto",balanceto);
+            requestMap.put("rankfrom",rankfrom);
+            requestMap.put("rankto",rankto);
+            requestMap.put("orderby",orderby);
+            requestMap.put("pagenum",pagenum);
+            requestMap.put("pagesize",pagesize);
 
             List<Map<String, Object>> data = nodeService.getAddressHoldMoneyRanking(requestMap);
             result.put("data", data);

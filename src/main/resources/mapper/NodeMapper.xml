@@ -5,7 +5,7 @@
     <select id="getAddressRankingMapper" parameterType="Map" resultType="Map" >
         select b.address, b.balance, cast(b.rank1 as signed) as `rank` from (
             select a.address, a.balance, a.rank1 rank1 from (
-                select s.address, s.balance, @rownum:=@rownum+1 rank1 from (
+                select s.address, s.balance, @rownum:=@rownum + 1 rank1 from (
                     select address, balance
                     from account
                     order by balance
@@ -29,7 +29,7 @@
                         ${rankfrom}
                     </when>
                     <otherwise>
-                        0
+                       1
                     </otherwise>
                 </choose>
                 ,

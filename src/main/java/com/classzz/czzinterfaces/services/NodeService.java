@@ -46,8 +46,8 @@ public class NodeService {
     }
 
     private void setPageNumOrSize(Integer pageNum, Integer pageSize, Map<String, Object> map){
-        map.put("limit1", (pageNum - 1) * pageSize);
-        map.put("limit2", pageNum * pageSize);
+        map.put("limit1", (pageNum -1) * pageSize);
+        map.put("limit2", pageSize);
     }
 
     /**
