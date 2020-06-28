@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.classzz.czzinterfaces.mappers.NodeMapper">
+
+    <select id="getAddressRankingMapper" parameterType="Map" resultType="Map" >
+        select b.address, b.balance, cast(b.rank1 as signed) as `rank` from (
+            select a.address, a.balance, a.rank1 rank1 from (
+                select s.address, s.balance, @rownum:=@rownum + 1 rank1 from (
+                    select address, balance
+                    from account
+                    order by balance
+                    <if test="orderby == false">
+                        desc
+                    </if>
+                ) s, (select @rownum:=0) s1
+            ) a
+            <where>
+                <if test="balancefrom != null and balancefrom != ''">
+                    and a.balance >= #{balancefrom}
+                </if>
+                <if test="balanceto != null and balanceto != ''">
+                    and a.balance &lt;= #{balanceto}
+                </if>
+            </where>
+            <if test="rankfrom != '' and rankfrom != null and rankto != '' and rankto != null">
+                limit
+                <choose>
+                    <when test="rankfrom != '' and rankfrom != null">
+                        ${rankfrom}
+                    </when>
+                    <otherwise>
+                       1
+                    </otherwise>
+                </choose>
+                ,
+                <choose>
+                    <when test="rankto != '' and rankto != null">
+                        ${rankto}
+                    </when>
+                    <otherwise>
+                        999999999999
+                    </otherwise>
+                </choose>
+            </if>
+        ) b limit ${limit1}, ${limit2};
+    </select>
+
+</mapper>
