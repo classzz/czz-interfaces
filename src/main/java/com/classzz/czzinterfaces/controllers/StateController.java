@@ -58,7 +58,6 @@ public class StateController {
     @RequestMapping(value = "getStateInfoById")
     public @ResponseBody
     JSONObject getStateInfoById(Integer id) {
-//        JSONArray array = new JSONArray();
         JSONObject result = new JSONObject();
 
         JSONObject data = new JSONObject();
@@ -69,7 +68,7 @@ public class StateController {
             result.put("data", data);
             return result;
         }
-        //质押金/(10^8)
+
         try {
             List<StateInfoDto> stateInfo = stateService.getStateInfo();
             if (null != stateInfo && stateInfo.size() > 0) {
