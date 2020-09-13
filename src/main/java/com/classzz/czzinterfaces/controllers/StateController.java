@@ -109,17 +109,12 @@ public class StateController {
 
     @RequestMapping(value = "getRateInfo")
     public @ResponseBody
-    JSONObject GetRateInfo(Integer id) {
+    JSONObject GetRateInfo() {
         JSONObject result = new JSONObject();
 
         JSONObject data = new JSONObject();
         result.put("state", 200);
         result.put("version", "v1.0");
-
-        if (null == id) {
-            result.put("data", data);
-            return result;
-        }
 
         String[] tokens = new String[]{"DOGE","LTC ","BTC","BCH","BSV"};
         try {

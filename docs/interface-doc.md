@@ -258,3 +258,229 @@ Response:
 
 
 
+### getRateInfo
+<a name="getRateInfo"/>
+Get the AddressRanking
+
+request method: GET
+
+Request path: http://localhost:8080/czzinterfaces/getRateInfo
+
+interface name: getRateInfo
+
+(All with * are optional)
+
+interface input parameter: *orderby,*balancefrom,*balanceto,*rankfrom,*rankto,*pagenum,*pagesize
+
+return instructions:
+```
+{
+    "state ": 200 (Integer) status code 200- normal, 500- abnormal,
+    "version ":"v1.0" (String) interface version,
+    "data" : {
+        "DOGE_CZZ": 1,
+        "LTC_CZZ":	1,
+        "BTC_CZZ":	1,
+        "BCH_CZZ":	1,
+        "BSV_CZZ":	1,
+    }
+}
+
+
+orderby 	==>	collation(true:Positive sequence,false:trans)	
+balancefrom	==>	Starting point of balance	
+balanceto	==>	End point of balance
+rankfrom	==>	Starting point of ranking
+rankto		==>	End point of ranking
+pagenum		==>	Number of pages	
+pagesize	==>	Page size	（default:20）
+
+```
+#### sample
+Request:
+
+GET http://localhost:8080/czzinterfaces/getAddressRanking
+
+Response:
+```json
+{
+    "state" : 200,
+    "version" : "v1.0",
+    "data" : {
+        "DOGE_CZZ": 1,
+        "LTC_CZZ":	1,
+        "BTC_CZZ":	1,
+        "BCH_CZZ":	1,
+        "BSV_CZZ":	1
+        }
+}
+```
+
+
+
+
+### getAddressExchangeInfo
+<a name="getAddressExchangeInfo"/>
+Get the getAddressExchangeInfo
+
+request method: GET
+
+Request path: http://localhost:8080/czzinterfaces/getAddressExchangeInfo
+
+interface name: getAddressExchangeInfo
+
+(All with * are optional)
+
+interface input parameter: *BeaconID,*Address, *orderby,*balancefrom,*balanceto,*rankfrom,*rankto,*pagenum,*pagesize
+
+return instructions:
+```
+{
+    "state ": 200 (Integer) status code 200- normal, 500- abnormal,
+    "version ":"v1.0" (String) interface version,
+    "data" : {
+        "last_height": 1,
+        "max_redeem":	1,
+    }
+}
+
+
+orderby 	==>	collation(true:Positive sequence,false:trans)	
+balancefrom	==>	Starting point of balance	
+balanceto	==>	End point of balance
+rankfrom	==>	Starting point of ranking
+rankto		==>	End point of ranking
+pagenum		==>	Number of pages	
+pagesize	==>	Page size	（default:20）
+
+```
+#### sample
+Request:
+
+GET http://localhost:8080/czzinterfaces/getAddressExchangeInfo
+
+Response:
+```json
+{
+    "state" : 200,
+    "version" : "v1.0",
+    "data" : {
+           "last_height": 1,
+           "max_redeem": 1
+        }
+}
+```
+
+
+
+
+
+### getBeaconFreeAsset
+<a name="getBeaconFreeAsset"/>
+Get the getBeaconFreeAsset
+
+request method: GET
+
+Request path: http://localhost:8080/czzinterfaces/getBeaconFreeAsset
+
+interface name: getBeaconFreeAsset
+
+(All with * are optional)
+
+interface input parameter: *BeaconID, *orderby,*balancefrom,*balanceto,*rankfrom,*rankto,*pagenum,*pagesize
+
+return instructions:
+```
+{
+    "state ": 200 (Integer) status code 200- normal, 500- abnormal,
+    "version ":"v1.0" (String) interface version,
+    "data" : {
+        "doge": 1,
+        "ltc":	1,
+        "btc":	1,
+        "bsv":	1,
+        "bch":	1,
+    }
+}
+
+
+orderby 	==>	collation(true:Positive sequence,false:trans)	
+balancefrom	==>	Starting point of balance	
+balanceto	==>	End point of balance
+rankfrom	==>	Starting point of ranking
+rankto		==>	End point of ranking
+pagenum		==>	Number of pages	
+pagesize	==>	Page size	（default:20）
+
+```
+#### sample
+Request:
+
+GET http://localhost:8080/czzinterfaces/getBeaconFreeAsset
+
+Response:
+```json
+{
+    "state" : 200,
+    "version" : "v1.0",
+    "data" : {
+         "doge": 1,
+         "ltc":	1,
+         "btc":	1,
+         "bsv":	1,
+         "bch":	1
+        }
+}
+```
+
+
+
+### getBeaconExchangeAsset
+<a name="getBeaconExchangeAsset"/>
+Get the getBeaconExchangeAsset
+
+request method: GET
+
+Request path: http://localhost:8080/czzinterfaces/getBeaconExchangeAsset
+
+interface name: getBeaconExchangeAsset
+
+(All with * are optional)
+
+interface input parameter: *Address, *orderby,*balancefrom,*balanceto,*rankfrom,*rankto,*pagenum,*pagesize
+
+return instructions:
+```
+{
+    "state ": 200 (Integer) status code 200- normal, 500- abnormal,
+    "version ":"v1.0" (String) interface version,
+    "data" : 1
+}
+
+
+orderby 	==>	collation(true:Positive sequence,false:trans)	
+balancefrom	==>	Starting point of balance	
+balanceto	==>	End point of balance
+rankfrom	==>	Starting point of ranking
+rankto		==>	End point of ranking
+pagenum		==>	Number of pages	
+pagesize	==>	Page size	（default:20）
+
+```
+#### sample
+Request:
+
+GET http://localhost:8080/czzinterfaces/getBeaconExchangeAsset
+
+Response:
+```json
+{
+    "state" : 200,
+    "version" : "v1.0",
+    "data" : 1
+}
+```
+
+
+
+
