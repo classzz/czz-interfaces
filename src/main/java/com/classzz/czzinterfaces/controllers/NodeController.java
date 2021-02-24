@@ -30,7 +30,7 @@ public class NodeController {
      * @return
      */
     @GetMapping("getAddressRanking")
-    public @ResponseBody JSONObject getAddressRanking(Boolean orderby , Double balancefrom, Double balanceto, Integer rankfrom, Integer rankto, Integer pagenum, Integer pagesize){
+    public @ResponseBody JSONObject getAddressRanking(Boolean orderby, Double balancefrom, Double balanceto, Integer rankfrom, Integer rankto, Integer pagenum, Integer pagesize){
 
         JSONObject result = new JSONObject();
         result.put("state", 200);
@@ -141,5 +141,7 @@ public class NodeController {
 
         return result;
     }
+
+
 
 }

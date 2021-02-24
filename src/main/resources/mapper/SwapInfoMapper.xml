@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.classzz.czzinterfaces.mappers.SwapInfoMapper">
+
+<!--
+create table swap_info
+(
+    id            int auto_increment
+        primary key,
+    system_type   varchar(64)                         null,
+    symbol        varchar(64)                         null,
+    token_address varchar(64)                         null,
+    create_time   datetime  default CURRENT_TIMESTAMP null,
+    update_time   timestamp default CURRENT_TIMESTAMP null
+);
+-->
+    <resultMap id="RM_SwapInfo" type="com.classzz.czzinterfaces.model.SwapInfo">
+        <result property="ID" column="id"/>
+        <result property="systemType" column="system_type"/>
+        <result property="symbol" column="symbol"/>
+        <result property="tokenAddress" column="token_address"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="getSwapInfo" resultMap="RM_SwapInfo" >
+        select * from swap_info;
+    </select>
+
+</mapper>
